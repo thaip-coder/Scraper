@@ -105,30 +105,3 @@ app.post("/articles/:id", function(req, res) {
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
 });
-
-
-
-//==============================================================
-console.log("\n***********************************\n" +
-            "Grabbing every thread name and link\n" +
-            "from reddit's webdev board:" +
-            "\n***********************************\n");
-
-axios.get("https://www.polygon.com/gaming").then(function(res) {
-    var $ = cheerio.load(res.data);
-
-    var results = [];
-
-    $("h3.c-entry-box-base_headline").each(function(i, element) {
-        var title = $(element).text();
-
-        var link = $(element).children().attr("href");
-
-        results.push({
-            title: title,
-            link: link
-        });
-    });
-
-    console.log(results);
-});

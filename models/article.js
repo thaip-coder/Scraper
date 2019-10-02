@@ -21,6 +21,6 @@ var ArticleSchema = new Schema({
 
 
 // Creates mode from the above schema with mongoose model method
-var Article = mongoose.model("Article". ArticleSchema);
+var Article = mongoose.model("Article", ArticleSchema);
 
 module.exports = Article;
