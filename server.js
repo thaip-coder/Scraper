@@ -59,6 +59,9 @@ app.get("/scrape", function(req, res) {
 
         //Send message to client
         res.send("Scrape COMPLETE!");
+    }).catch(function(error) {
+        console.log(error);
+        res.send("Scrape ACCESSING WEBSITE ERROR!");
     });
 });
 

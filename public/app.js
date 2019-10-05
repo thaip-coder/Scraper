@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+//Navbar Functions
 $("#saved").hide();
 
 $(document).on("click", "#faves", function() {
@@ -11,6 +12,15 @@ $(document).on("click", "#home", function() {
     $("#results").show();
     $("#saved").hide();
 });
+
+$("#scrape-btn").on("click", function() {
+    $.getJSON("/scrape", function(data) {
+        for (var i = 0; i < data.length; i++) {
+            $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+        }
+    });
+});
+
 // Grabs articles as a JSON
 $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
