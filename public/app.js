@@ -1,5 +1,16 @@
 $(document).ready(function() {
 
+$("#saved").hide();
+
+$(document).on("click", "#faves", function() {
+    $("#results").hide();
+    $("#saved").show();
+});
+
+$(document).on("click", "#home", function() {
+    $("#results").show();
+    $("#saved").hide();
+});
 // Grabs articles as a JSON
 $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
