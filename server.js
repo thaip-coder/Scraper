@@ -35,7 +35,7 @@ app.get("/scrape", function(req, res) {
         var $ = cheerio.load(response.data);
         
         //Grabs every h3 with an headline tag
-        $("h3.c-entry-box-base_headline").each(function(i, element) {
+        $("h2.c-entry-box--compact__title").each(function(i, element) {
             //Saves into empty object
             var result = {};
 
