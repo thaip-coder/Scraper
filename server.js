@@ -33,20 +33,35 @@ app.get("/scrape", function(req, res) {
     axios.get("https://www.polygon.com/gaming").then(function(response) {
         //Load data into cheerio via $ for easy access
         var $ = cheerio.load(response.data);
+
+           //Remove db
+           db.Article.remove({})
+           .then(function(dbArticle) {
+               console.log(dbArticle); 
+           })
+           .catch(function(err) {
+               console.log(err);
+           });
         
         //Grabs every h3 with an headline tag
-        $("h2.c-entry-box--compact__title").each(function(i, element) {
+        $("div.c-entry-box--compact--article").each(function(i, element) {
             //Saves into empty object
             var result = {};
 
             //Add text and href of every link as properties of the result object
-            result.title = $(this)
+            result.image = $(this)
                 .children("a")
+                .children("div")
+                .children("img")
+                .attr("src")
+            result.title = $(this)
+                .find("h2.c-entry-box--compact__title")
                 .text();
             result.link = $(this)
+                .find("h2.c-entry-box--compact__title")
                 .children("a")
                 .attr("href");
-
+         
             //Creat a new Article using the "result" object built from scraping
             db.Article.create(result)
             .then(function(dbArticle) {
@@ -64,6 +79,8 @@ app.get("/scrape", function(req, res) {
         res.send("Scrape ACCESSING WEBSITE ERROR!");
     });
 });
+
+
 
 // ---------- Route for getting articles from the db ---------- //
 app.get("/articles", function(req, res) {

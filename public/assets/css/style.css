@@ -26,3 +26,15 @@ h3 {
 .result-title {
     color: orange;
 }
+
+#clear-scrape {
+    background-color: orange;
+}
+
+#scrape-btn {
+    background-color: orange;
+}
+
+#save {
+    background-color: orange;
+}

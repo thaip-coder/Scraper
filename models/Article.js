@@ -5,6 +5,9 @@ var Schema = mongoose.Schema;
 
 // Using the schema instructor to create a new UserSchema object
 var ArticleSchema = new Schema({
+    image: {
+        type: String
+    },
     title: {
         type: String,
         required: true
@@ -16,6 +19,10 @@ var ArticleSchema = new Schema({
     note: {
         type: Schema.Types.ObjectId,
         ref: "Note"
+    },
+    saved: {
+        type: Boolean,
+        default: false
     }
 });
 
