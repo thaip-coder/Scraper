@@ -20,7 +20,7 @@ $("#scrape-btn").on("click", function() {
     $.getJSON("/articles", function(data) {
         for (var i = 0; i < data.length; i++) {
             $("#articles").append(
-                "<div class='card' style='background-color:black;'><div class='card-content'><span class='result-title'>" + data[i].title + "</span><a class='btn right'>Save</a></div><div class='card-action'><a href='" + data[i].link + "'>This is a link</a></div></div>"
+                "<div class='card' style='background-color:black;'><div class='card-content'><span class='result-title'><h4>" + data[i].title + "</h4></span></div><div class='card-action'><a href='" + data[i].link + "'>Link to Article</a><a id='save' class='btn'>Save</a></div></div>"
             );
         };
     });
@@ -35,7 +35,7 @@ $("#clear-scrape").on("click", function() {
 $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
         $("#articles").append(
-            "<div class='card' style='background-color:black;'><div class='card-content'><span class='result-title'>" + data[i].title + "</span><a class='btn right'>Save</a></div><div class='card-action'><a href='" + data[i].link + "'>This is a link</a></div></div>"
+            "<div class='card' style='background-color:black;'><div class='card-content'><span class='result-title'><h4>" + data[i].title + "</h4></span></div><div class='card-action'><a href='" + data[i].link + "'>Link to Article</a><a id='save' class='btn'>Save</a></div></div>"
         );
     };
 });
