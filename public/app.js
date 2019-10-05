@@ -14,12 +14,16 @@ $(document).on("click", "#home", function() {
 });
 
 $("#scrape-btn").on("click", function() {
-    $.getJSON("/scrape", function(data) {
+    $.getJSON("/articles", function(data) {
         for (var i = 0; i < data.length; i++) {
             $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
         }
     });
 });
+
+$("#clear-scrape").on("click", function() {
+    $("#articles").empty();
+})
 
 // Grabs articles as a JSON
 $.getJSON("/articles", function(data) {
