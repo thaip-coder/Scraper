@@ -1,38 +1,52 @@
 $(document).ready(function() {
 
-//Navbar Functions
+//Hides favorites section on website load
 $("#saved").hide();
 
+//Clicking faves shows favorited section
 $(document).on("click", "#faves", function() {
     $("#results").hide();
     $("#saved").show();
 });
 
+//Clicking home will show results section
 $(document).on("click", "#home", function() {
     $("#results").show();
     $("#saved").hide();
 });
 
+//Reruns the scrape route to scrape newest articles
 $("#scrape-btn").on("click", function() {
     $.getJSON("/articles", function(data) {
         for (var i = 0; i < data.length; i++) {
-            $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-        }
+            $("#articles").append(
+                "<div class='card' style='background-color:black;'><div class='card-content'><span class='result-title'>" + data[i].title + "</span><a class='btn right'>Save</a></div><div class='card-action'><a href='" + data[i].link + "'>This is a link</a></div></div>"
+            );
+        };
     });
 });
 
+//Clears the articles section
 $("#clear-scrape").on("click", function() {
     $("#articles").empty();
 })
 
-// Grabs articles as a JSON
+// Scrapes articles from webpage and appends to index.html
 $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
-        $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-    }
+        $("#articles").append(
+            "<div class='card' style='background-color:black;'><div class='card-content'><span class='result-title'>" + data[i].title + "</span><a class='btn right'>Save</a></div><div class='card-action'><a href='" + data[i].link + "'>This is a link</a></div></div>"
+        );
+    };
 });
 
 
+
+
+
+
+
+// ---------- ADDING NOTES TO SAVED ARTICLES ---------- //
 // Click on p tag to write note
 $(document).on("click", "p", function() {
     $("#notes").empty();
