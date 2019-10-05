@@ -1,0 +1,16 @@
+#navbar {
+    background-image: url(../images/mosaic.png);
+    background-repeat: repeat;
+    background-size: contain;
+}
+
+#wrapper {
+    background-image: url(../images/orangepoly.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    height: 300px;
+}
+
+body {
+    background-image: url(../images/mosaic.png);
+}
