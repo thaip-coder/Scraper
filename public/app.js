@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-$('.parallax').parallax();
-
 // Grabs articles as a JSON
 $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
