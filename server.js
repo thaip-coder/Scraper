@@ -33,15 +33,6 @@ app.get("/scrape", function(req, res) {
     axios.get("https://www.polygon.com/gaming").then(function(response) {
         //Load data into cheerio via $ for easy access
         var $ = cheerio.load(response.data);
-
-           //Remove db
-           db.Article.remove({})
-           .then(function(dbArticle) {
-               console.log(dbArticle); 
-           })
-           .catch(function(err) {
-               console.log(err);
-           });
         
         //Grabs every h3 with an headline tag
         $("div.c-entry-box--compact--article").each(function(i, element) {
