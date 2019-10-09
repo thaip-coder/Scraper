@@ -9,7 +9,7 @@ var app = express();
 
 var db = require("./models");
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3001;
 
 //Morgan logger for logging requests
 app.use(logger("dev"));
